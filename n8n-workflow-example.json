@@ -1,0 +1,107 @@
+{
+  "name": "HTML to Ricos Converter Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "value": "<h1>Example HTML</h1><p>This is a <strong>test</strong> of the <em>HTML to Ricos</em> converter.</p><ul><li>Item 1</li><li>Item 2</li></ul>",
+        "name": "html",
+        "options": {}
+      },
+      "name": "HTML Content",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        470,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://your-railway-app-url.railway.app/convert",
+        "authentication": "none",
+        "sendBody": true,
+        "contentType": "json",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "html",
+              "value": "={{ $node[\"HTML Content\"].json[\"html\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Convert to Ricos",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        670,
+        300
+      ]
+    },
+    {
+      "parameters": {},
+      "name": "Process Result",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        870,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "HTML Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML Content": {
+      "main": [
+        [
+          {
+            "node": "Convert to Ricos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to Ricos": {
+      "main": [
+        [
+          {
+            "node": "Process Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "",
+  "id": "123",
+  "meta": {
+    "instanceId": "local_n8n"
+  },
+  "tags": []
+} 
