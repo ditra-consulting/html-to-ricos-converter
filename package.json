@@ -2,11 +2,11 @@
   "name": "html-to-ricos-api",
   "version": "1.0.0",
   "description": "API for converting HTML to Ricos format",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "node test.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "node src/test.js"
   },
   "engines": {
     "node": ">=14.0.0"
