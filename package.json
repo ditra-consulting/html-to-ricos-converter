@@ -4,9 +4,9 @@
   "description": "API for converting HTML to Ricos format",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
-    "test": "node src/test.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "node test.js"
   },
   "engines": {
     "node": ">=14.0.0"
@@ -21,4 +21,4 @@
   "devDependencies": {
     "nodemon": "^3.0.1"
   }
-} 
+}
